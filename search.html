@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MOBILE SEARCH ENGINES</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #141414;
+            color: #fff;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #e50914;
+            color: #fff;
+            padding-top: 20px;
+            min-height: 60px;
+            border-bottom: #eaeaea 1px solid;
+        }
+        header h1 {
+            padding: 5px 0;
+            text-align: center;
+            font-size: 24px;
+        }
+        .search-form {
+            text-align: center;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+        .search-form input[type="text"] {
+            width: 40%;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #333;
+            background-color: #333;
+            color: #fff;
+        }
+        .search-form input[type="submit"] {
+            padding: 12px 24px;
+            border-radius: 5px;
+            border: none;
+            background-color: #e50914;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .results {
+            margin-top: 30px;
+        }
+        .results h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+        .results ul {
+            list-style: none;
+            padding: 0;
+        }
+        .results ul li {
+            background-color: #333;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .results ul li a {
+            text-decoration: none;
+            color: #e50914;
+        }
+        .results ul li a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>MOBILE SEARCH ENGINE</h1>
+    </header>
+    <div class="container">
+        <div class="search-form">
+            <form action="/query" method="post">
+                <input type="text" name="query" placeholder="Enter search terms...">
+                <input type="submit" value="Search">
+            </form>
+        </div>
+        <div class="results">
+            {% if results %}
+                <h2>Results:</h2>
+                <ul>
+                    {% for url, score in results %}
+                        <li><a href="{{ url }}">{{ url }}</a> - Score: {{ score }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
